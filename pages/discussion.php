@@ -6,8 +6,6 @@ $root_config = '../config/';
 
 require_once($root_config . 'config.php');
 
-$_SESSION = [10, 11, 30];
-
 if (isset($_GET['d'])) {
   session_destroy();
 }
