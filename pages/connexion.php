@@ -6,9 +6,13 @@ $root_config = '../config/';
 
 require_once($root_config . 'config.php');
 
+$users = list_users($DB_test, $DB_user, $DB_pwd);
+
+$connexion_state = connex_account($users);
 
 if (isset($_GET['d'])) {
   session_destroy();
+  header('Location:' . $root_index . 'index.php');
 }
 
 ?>

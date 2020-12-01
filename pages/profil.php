@@ -6,6 +6,26 @@ $root_config = '../config/';
 
 require_once($root_config . 'config.php');
 
+$users = list_users($DB_test, $DB_user, $DB_pwd);
+
+if (!empty($_POST['login'])) {
+  $verif_user = check_user($users);
+} else {
+  $verif_user = null;
+}
+
+if (!empty($_POST['password'])) {
+  $verif_pwd = check_password($_POST['password'], $_POST['c_password']);
+} else {
+  $verif_pwd = null;
+}
+
+if (!empty($_POST['old_password'])) {
+  $verif_old = check_old_pwd($DB_test, $DB_user, $DB_pwd);
+  if ($verif_old === true) {
+    upd_account($DB_test, $DB_user, $DB_pwd, $verif_user, $verif_pwd);
+  }
+}
 
 if (isset($_GET['d'])) {
   session_destroy();
@@ -27,7 +47,7 @@ if (isset($_GET['d'])) {
   <?php require_once($root_config . 'header.php') ?>
 
   <div class="container">
-    <form action="connexion.php" method="post">
+    <form action="profil.php" method="post">
       <div class="form-group">
         <label for="login">
           Nom d'utilisateur :

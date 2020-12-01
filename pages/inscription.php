@@ -6,9 +6,22 @@ $root_config = '../config/';
 
 require_once($root_config . 'config.php');
 
+$users = list_users($DB_test, $DB_user, $DB_pwd);
 
-if (isset($_GET['d'])) {
-  session_destroy();
+if (!empty($_POST['login'])) {
+  $verif_user = check_user($users);
+}
+if (!empty($_POST['password'])) {
+  $verif_pwd = check_password($_POST['password'], $_POST['c_password']);
+}
+if (isset($verif_pwd, $verif_user)) {
+  if ($verif_pwd === true && $verif_user === true) {
+    $crea_user = crea_account($DB_test, $DB_user, $DB_pwd);
+  }
+}
+
+if (isset($crea_user) && $crea_user === true) {
+  header('Location:connexion.php');
 }
 
 ?>
@@ -27,7 +40,7 @@ if (isset($_GET['d'])) {
   <?php require_once($root_config . 'header.php') ?>
 
   <div class="container">
-    <form action="connexion.php" method="post">
+    <form action="inscription.php" method="post">
       <div class="form-group">
         <label for="login">Créez votre nom d'utilisateur : </label>
         <input type="text" name="login" id="login" class="form-control" placeholder="Nom d'utilisateur" aria-describedby="helpId">
@@ -40,7 +53,7 @@ if (isset($_GET['d'])) {
         <label for="c_password">Confirmez votre mot de passe :</label>
         <input type="password" class="form-control" name="c_password" id="c_password" placeholder="Confirmation mot de passe">
       </div>
-      <button type="submit" class="btn btn-dark">Connexion</button>
+      <button type="submit" class="btn btn-dark">M'inscrire</button>
     </form>
   </div>
 
