@@ -34,10 +34,11 @@ if (isset($_GET['d'])) {
 
 <body class="h-100 d-flex flex-column justify-content-between">
   <?php require_once($root_config . 'header.php') ?>
-  <main class="vh-50">
+  <main class="h-100 d-flex flex-column justify-content-around align-items-center">
     <?php if (!empty($_SESSION)) : ?>
       <div class="container">
-        <div style="overflow: scroll; height : 30em;">
+        <h2 class="mb-5">Tous vos bon messages :</h2>
+        <div id="fil" style="overflow: scroll; height : 20em;">
           <?php if (!empty($messages)) : ?>
             <?php foreach ($messages as $message) : ?>
               <p>
@@ -47,12 +48,19 @@ if (isset($_GET['d'])) {
             <?php endforeach ?>
           <?php endif; ?>
         </div>
-        <form action="discussion.php" method="post">
-          <div class="form-group">
-            <label for="message">Votre message :</label>
-            <input type="text" name="message" id="message" class="form-control" placeholder="Votre message ici ..." aria-describedby="helpId">
+        <form action="discussion.php" method="post" class="d-flex flex-column w-100">
+          <div class="form-group m-4">
+            <label for="message" class="mb-3">Ton bon message :</label>
+            <input type="text" name="message" id="message" class="form-control" placeholder="Ton bon message ici ..." aria-describedby="helpId">
           </div>
-          <button type="submit" class="btn btn-dark">Envoyer</button>
+          <div class="d-flex flex-row justify-content-between align-items-center w-100">
+            <?php if (isset($_POST['message'])) : ?>
+              <div class="alert alert-warning">Attention on dirait que tu as oublié d'écrire ton message !</div>
+            <?php else : ?>
+              <div></div>
+            <?php endif; ?>
+            <button type="submit" class="btn btn-dark">Envoyer</button>
+          </div>
         </form>
       </div>
     <?php else : ?>
