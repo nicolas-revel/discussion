@@ -5,6 +5,7 @@ require_once('config/config.php');
 $root_index = '';
 $root_pages = 'pages/';
 $root_config = 'config/';
+$root_css = "css/";
 
 if (isset($_GET['d'])) {
   session_destroy();
@@ -22,6 +23,7 @@ if (isset($_GET['d'])) {
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <!-- Bootstrap CSS -->
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  <link rel="stylesheet" href="<?= $root_css ?>custom.css">
 </head>
 
 <body class="h-100 d-flex flex-column justify-content-between">
@@ -29,8 +31,8 @@ if (isset($_GET['d'])) {
   <?php require_once($root_config . 'header.php') ?>
   <main class="h-100 d-flex flex-column justify-content-around align-items-center">
     <?php if (empty($_SESSION)) : ?>
-      <div class="container ">
-        <h2>Salut, on espère que tu vas passer un bon moment</h2>
+      <div class="container p-5 rounded-lg m-5">
+        <h2 class="mb-5">Salut, on espère que tu vas passer un bon moment</h2>
         <p class="text-lead">Bienvenue sur notre site de fan de l'émission Un Bon Moment. Ce site n'a pas tellement pour but de présenter l'émission et son concept, mais plutôt de réunir tous les fans de l'émission sur un même site pour déchiffrer les énigmes de chaque épisode.</p>
         <p>Tu peux t'inscrire en cliquant sur l'onglet "Inscription" juste en haut, ou en <a href="<?= $root_pages ?>inscription.php">cliquant ici</a>.</p>
         <p>Si tu as déjà un compte, tu peux aussi te connecter directement via le bouton de connexion en haut à droite ou en <a href="<?= $root_pages ?>connexion.php">cliquant ici</a>.</p>
