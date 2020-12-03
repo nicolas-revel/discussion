@@ -6,6 +6,7 @@ $root_index = '';
 $root_pages = 'pages/';
 $root_config = 'config/';
 $root_css = "css/";
+$root_img = "img/";
 
 if (isset($_GET['d'])) {
   session_destroy();

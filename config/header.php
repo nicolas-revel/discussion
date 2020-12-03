@@ -1,6 +1,6 @@
 <header>
   <nav class="navbar navbar-expand-sm navbar-dark" id="navbar">
-    <a class="navbar-brand ml-5" href="<?= $root_index . 'index.php' ?>"><img src="img/logo_unbonmoment.png"" alt=""></a>
+    <a class="navbar-brand ml-5" href="<?= $root_index . 'index.php' ?>"><img src="<?= $root_img ?>logo_unbonmoment.png"" alt=""></a>
     <button class=" navbar-toggler d-lg-none mr-4" type="button" data-toggle="collapse" data-target="#collapsibleNavId" aria-controls="collapsibleNavId" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
       </button>
