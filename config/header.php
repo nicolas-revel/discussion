@@ -6,18 +6,18 @@
     </button>
     <div class="collapse navbar-collapse" id="collapsibleNavId">
       <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
-        <li class="nav-item active">
-          <a class="nav-link" href="<?= $root_index . 'index.php' ?>">Accueil <span class="sr-only">(current)</span></a>
+        <li class="nav-item <?php if ($_SERVER['SCRIPT_NAME'] === '/discussion/index.php') : ?>active<?php endif; ?>">
+          <a class="nav-link" href="<?= $root_index . 'index.php' ?>">Accueil</a>
         </li>
         <?php if (empty($_SESSION)) : ?>
-          <li class="nav-item">
+          <li class="nav-item <?php if ($_SERVER['SCRIPT_NAME'] === '/discussion/pages/inscription.php') : ?>active<?php endif; ?>">
             <a class="nav-link" href="<?= $root_pages . 'inscription.php' ?>">Inscription</a>
           </li>
         <?php else : ?>
-          <li class="nav-item">
+          <li class="nav-item <?php if ($_SERVER['SCRIPT_NAME'] === '/discussion/pages/profil.php') : ?>active<?php endif; ?>">
             <a class="nav-link" href="<?= $root_pages . 'profil.php' ?>">Mon profil</a>
           </li>
-          <li class="nav-item">
+          <li class="nav-item <?php if ($_SERVER['SCRIPT_NAME'] === '/discussion/pages/discussion.php') : ?>active<?php endif; ?>">
             <a class="nav-link" href="<?= $root_pages . 'discussion.php' ?>">Fil de discussion</a>
           </li>
         <?php endif; ?>

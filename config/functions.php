@@ -115,7 +115,7 @@ function add_message($db, $user, $pwd)
 function list_message($db, $user, $pwd)
 {
   $pdo = new PDO($db, $user, $pwd);
-  $query = $pdo->query("SELECT messages.id, message, id_utilisateur, utilisateurs.login, date FROM messages INNER JOIN utilisateurs ON messages.id_utilisateur = utilisateurs.id ORDER BY messages.id ASC");
+  $query = $pdo->query("SELECT messages.id, message, id_utilisateurs, utilisateurs.login, date FROM messages INNER JOIN utilisateurs ON messages.id_utilisateurs = utilisateurs.id ORDER BY messages.id ASC");
   if ($query) {
     $result = $query->fetchAll(PDO::FETCH_ASSOC);
     return $result;
