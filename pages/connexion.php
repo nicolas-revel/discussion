@@ -35,17 +35,17 @@ if (isset($_GET['d'])) {
 
 <body class="h-100 d-flex flex-column justify-content-between">
   <?php require_once($root_config . 'header.php') ?>
-  <main>
+  <main class="h-100 d-flex flex-column justify-content-around align-items-center">
     <?php if (empty($_SESSION)) : ?>
       <div class="container">
         <form action="connexion.php" method="post">
           <div class="form-group">
-            <label for="login">Nom d'utilisateur : </label>
-            <input type="text" name="login" id="login" class="form-control" placeholder="Votre nom d'utilisateur ici" aria-describedby="helpId">
+            <label for="login">Votre bon nom d'utilisateur : </label>
+            <input type="text" name="login" id="login" class="form-control" placeholder="Votre bon nom d'utilisateur ici" aria-describedby="helpId" autofocus>
           </div>
           <div class="form-group">
-            <label for="password">Mot de passe : </label>
-            <input type="password" class="form-control" name="password" id="password" placeholder="Votre mot de passe ici">
+            <label for="password">Votre bon mot de passe : </label>
+            <input type="password" class="form-control" name="password" id="password" placeholder="Votre bon mot de passe ici">
           </div>
           <button type="submit" class="btn btn-dark">Connexion</button>
         </form>

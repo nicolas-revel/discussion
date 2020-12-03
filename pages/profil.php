@@ -47,26 +47,27 @@ if (isset($_GET['d'])) {
 
 <body class="h-100 d-flex flex-column justify-content-between">
   <?php require_once($root_config . 'header.php') ?>
-  <main>
+  <main class="h-100 d-flex flex-column justify-content-around align-items-center">
     <?php if (!empty($_SESSION)) : ?>
       <div class="container">
+        <h2 class="mb-5">Ton bon profil</h2>
         <form action="profil.php" method="post">
           <div class="form-group">
             <label for="login">
-              Nom d'utilisateur :
+              Votre bon nom d'utilisateur :
               <?php if (!empty($_SESSION['login'])) : echo $_SESSION['login'];
               endif ?>
             </label>
-            <input type="text" name="login" id="login" class="form-control" placeholder="Mettre à jour votre nom d'utilisateur" aria-describedby="helpId">
+            <input type="text" name="login" id="login" class="form-control" placeholder="Changer pour un meilleur nom d'utilisateur ?" aria-describedby="helpId" autofocus>
           </div>
           <div class="form-group">
-            <input type="password" class="form-control" name="old_password" id="old_password" placeholder="Votre ancien mot de passe">
+            <input type="password" class="form-control" name="old_password" id="old_password" placeholder="Entrez votre bon mot de passe" required>
           </div>
           <div class="form-group">
-            <input type="password" class="form-control" name="password" id="password" placeholder="Mettre à jour votre mot de passe">
+            <input type="password" class="form-control" name="password" id="password" placeholder="Mettre à jour votre bon mot de passe">
           </div>
           <div class="form-group">
-            <input type="password" class="form-control" name="c_password" id="c_password" placeholder="Confirmer votre nouveau mot de passe">
+            <input type="password" class="form-control" name="c_password" id="c_password" placeholder="Confirmer votre nouveau bon mot de passe">
           </div>
           <button type="submit" class="btn btn-dark">Connexion</button>
         </form>
