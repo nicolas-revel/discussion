@@ -9,9 +9,18 @@
         <li class="nav-item active">
           <a class="nav-link" href="<?= $root_index . 'index.php' ?>">Accueil <span class="sr-only">(current)</span></a>
         </li>
-        <li class="nav-item">
-          <a class="nav-link" href="<?= $root_pages . 'inscription.php' ?>">Inscription</a>
-        </li>
+        <?php if (empty($_SESSION)) : ?>
+          <li class="nav-item">
+            <a class="nav-link" href="<?= $root_pages . 'inscription.php' ?>">Inscription</a>
+          </li>
+        <?php else : ?>
+          <li class="nav-item">
+            <a class="nav-link" href="<?= $root_pages . 'profil.php' ?>">Mon profil</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="<?= $root_pages . 'discussion.php' ?>">Fil de discussion</a>
+          </li>
+        <?php endif; ?>
       </ul>
       <?php if (empty($_SESSION)) : ?>
         <a href="<?= $root_pages . 'connexion.php' ?>"><button class="btn btn-outline-success my-2 my-sm-0">Se connecter</button></a>

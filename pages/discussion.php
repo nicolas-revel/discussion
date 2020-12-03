@@ -6,6 +6,14 @@ $root_config = '../config/';
 
 require_once($root_config . 'config.php');
 
+$messages = list_message($DB_connect, $DB_user, $DB_pwd);
+
+if (!empty($_POST['message'])) {
+  add_message($DB_connect, $DB_user, $DB_pwd);
+  header('Refresh:0');
+  exit;
+}
+
 if (isset($_GET['d'])) {
   session_destroy();
 }
@@ -25,11 +33,18 @@ if (isset($_GET['d'])) {
 <body>
   <?php require_once($root_config . 'header.php') ?>
   <main class="vh-50">
-    <div class="w-50" style="overflow: scroll; height : 30em;">
-      <?php ?>
-    </div>
     <div class="container">
-      <form action="connexion.php" method="post">
+      <div style="overflow: scroll; height : 30em;">
+        <?php if (!empty($messages)) : ?>
+          <?php foreach ($messages as $message) : ?>
+            <p>
+              <?php $date = new DateTime($message['date']);
+              echo $date->format('H:i'); ?>
+              <?= $message['login'] . ' : ' . $message['message'] ?></p>
+          <?php endforeach ?>
+        <?php endif; ?>
+      </div>
+      <form action="discussion.php" method="post">
         <div class="form-group">
           <label for="message">Votre message :</label>
           <input type="text" name="message" id="message" class="form-control" placeholder="Votre message ici ..." aria-describedby="helpId">

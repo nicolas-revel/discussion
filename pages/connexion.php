@@ -6,7 +6,7 @@ $root_config = '../config/';
 
 require_once($root_config . 'config.php');
 
-$users = list_users($DB_test, $DB_user, $DB_pwd);
+$users = list_users($DB_connect, $DB_user, $DB_pwd);
 
 $connexion_state = connex_account($users);
 

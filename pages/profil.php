@@ -6,7 +6,7 @@ $root_config = '../config/';
 
 require_once($root_config . 'config.php');
 
-$users = list_users($DB_test, $DB_user, $DB_pwd);
+$users = list_users($DB_connect, $DB_user, $DB_pwd);
 
 if (!empty($_POST['login'])) {
   $verif_user = check_user($users);
@@ -21,9 +21,9 @@ if (!empty($_POST['password'])) {
 }
 
 if (!empty($_POST['old_password'])) {
-  $verif_old = check_old_pwd($DB_test, $DB_user, $DB_pwd);
+  $verif_old = check_old_pwd($DB_connect, $DB_user, $DB_pwd);
   if ($verif_old === true) {
-    upd_account($DB_test, $DB_user, $DB_pwd, $verif_user, $verif_pwd);
+    upd_account($DB_connect, $DB_user, $DB_pwd, $verif_user, $verif_pwd);
   }
 }
 

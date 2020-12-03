@@ -6,7 +6,7 @@ $root_config = '../config/';
 
 require_once($root_config . 'config.php');
 
-$users = list_users($DB_test, $DB_user, $DB_pwd);
+$users = list_users($DB_connect, $DB_user, $DB_pwd);
 
 if (!empty($_POST['login'])) {
   $verif_user = check_user($users);
@@ -16,7 +16,7 @@ if (!empty($_POST['password'])) {
 }
 if (isset($verif_pwd, $verif_user)) {
   if ($verif_pwd === true && $verif_user === true) {
-    $crea_user = crea_account($DB_test, $DB_user, $DB_pwd);
+    $crea_user = crea_account($DB_connect, $DB_user, $DB_pwd);
   }
 }
 

@@ -3,7 +3,7 @@
 function list_users($db, $user, $pwd)
 {
   $pdo = new PDO($db, $user, $pwd);
-  $query = $pdo->query("SELECT * FROM `test-utilisateurs`");
+  $query = $pdo->query("SELECT * FROM `utilisateurs`");
   $result = $query->fetchAll(PDO::FETCH_ASSOC);
   return $result;
 }
@@ -49,7 +49,7 @@ function crea_account($db, $user, $pwd)
     $login = htmlspecialchars($_POST['login']);
     $password = password_hash($_POST['password'], PASSWORD_BCRYPT);
     $pdo = new PDO($db, $user, $pwd);
-    $pdo->query("INSERT INTO `test-utilisateurs` (`login`, `password`) VALUES ('$login', '$password')");
+    $pdo->query("INSERT INTO `utilisateurs` (`login`, `password`) VALUES ('$login', '$password')");
     return true;
   }
 }
@@ -75,7 +75,7 @@ function check_old_pwd($db, $user, $pwd)
 {
   $id = $_SESSION['id'];
   $pdo = new PDO($db, $user, $pwd);
-  $query = $pdo->query("SELECT `password` FROM `test-utilisateurs` WHERE id = '$id'");
+  $query = $pdo->query("SELECT `password` FROM `utilisateurs` WHERE id = '$id'");
   $result = $query->fetch(PDO::FETCH_ASSOC);
   if (!empty($_POST['old_password'])) {
     $check_old_pass = password_verify($_POST['old_password'], $result['password']);
@@ -100,6 +100,24 @@ function upd_account($db, $user, $pwd, $check_user, $check_pass)
     $login = $_SESSION['login'];
     $password = $_SESSION['password'];
     $pdo = new PDO($db, $user, $pwd);
-    $pdo->query("UPDATE `test-utilisateurs` SET `login`= '$login',`password`= '$password' WHERE `id`='$id'");
+    $pdo->query("UPDATE `utilisateurs` SET `login`= '$login',`password`= '$password' WHERE `id`='$id'");
+  }
+}
+
+function add_message($db, $user, $pwd)
+{
+  $message = htmlspecialchars($_POST['message']);
+  $id_utilisateur = htmlspecialchars($_SESSION['id']);
+  $pdo = new PDO($db, $user, $pwd);
+  $pdo->query("INSERT INTO `messages`(`message`, `id_utilisateur`, `date`) VALUES ('$message','$id_utilisateur', NOW())");
+}
+
+function list_message($db, $user, $pwd)
+{
+  $pdo = new PDO($db, $user, $pwd);
+  $query = $pdo->query("SELECT messages.id, message, id_utilisateur, utilisateurs.login, date FROM messages INNER JOIN utilisateurs ON messages.id_utilisateur = utilisateurs.id ORDER BY messages.id ASC");
+  if ($query) {
+    $result = $query->fetchAll(PDO::FETCH_ASSOC);
+    return $result;
   }
 }
