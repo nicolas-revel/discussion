@@ -3,6 +3,8 @@
 $root_index = '../';
 $root_pages = '';
 $root_config = '../config/';
+$root_css = "../css/";
+$root_img = "../img/";
 
 require_once($root_config . 'config.php');
 
@@ -29,6 +31,7 @@ if (isset($_GET['d'])) {
   <title>Connexion</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <link rel="stylesheet" href="<?= $root_css ?>custom.css">
   <!-- Bootstrap CSS -->
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 </head>
@@ -37,15 +40,15 @@ if (isset($_GET['d'])) {
   <?php require_once($root_config . 'header.php') ?>
   <main class="h-100 d-flex flex-column justify-content-around align-items-center">
     <?php if (empty($_SESSION)) : ?>
-      <div class="container">
+      <div class="container w-50">
         <form action="connexion.php" method="post">
           <div class="form-group">
             <label for="login">Votre bon nom d'utilisateur : </label>
-            <input type="text" name="login" id="login" class="form-control" placeholder="Votre bon nom d'utilisateur ici" aria-describedby="helpId" autofocus>
+            <input type="text" name="login" id="login" class="form-control" placeholder="Votre bon nom d'utilisateur ici" aria-describedby="helpId" autofocus required>
           </div>
           <div class="form-group">
             <label for="password">Votre bon mot de passe : </label>
-            <input type="password" class="form-control" name="password" id="password" placeholder="Votre bon mot de passe ici">
+            <input type="password" class="form-control" name="password" id="password" placeholder="Votre bon mot de passe ici" required>
           </div>
           <button type="submit" class="btn btn-dark">Connexion</button>
         </form>

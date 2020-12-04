@@ -1,4 +1,4 @@
-<footer class="bg-dark text-dark">
+<footer>
   <div class="d-flex flex-row justify-content-around">
     <nav class="nav flex-column justify-content-center">
       <a class="nav-link" href="https://www.youtube.com/channel/UC-6TxFNjRXDwCBicVMmK5vg">La chaîne YouTube de l'émission</a>
