@@ -106,10 +106,14 @@ function upd_account($db, $user, $pwd, $check_user, $check_pass)
 
 function add_message($db, $user, $pwd)
 {
-  $message = htmlspecialchars($_POST['message']);
-  $id_utilisateur = htmlspecialchars($_SESSION['id']);
   $pdo = new PDO($db, $user, $pwd);
-  $pdo->query("INSERT INTO `messages`(`message`, `id_utilisateur`, `date`) VALUES ('$message','$id_utilisateur', NOW())");
+  $requete = "INSERT INTO messages (message, id_utilisateurs, date) VALUES (:message, :id_utilisateurs, NOW())";
+  $query = $pdo->prepare($requete);
+  $query->execute([
+    'message' => $_POST['message'],
+    'id_utilisateurs' => $_SESSION['id']
+  ]);
+  return $query;
 }
 
 function list_message($db, $user, $pwd)

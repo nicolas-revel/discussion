@@ -12,14 +12,12 @@ $messages = list_message($DB_connect, $DB_user, $DB_pwd);
 
 if (!empty($_POST['message'])) {
   add_message($DB_connect, $DB_user, $DB_pwd);
-  header('Refresh:0');
-  exit;
+  header('refresh:0');
 }
 
 if (isset($_GET['d'])) {
   session_destroy();
   header('Location:' . $root_index . 'index.php');
-  exit;
 }
 
 ?>
@@ -41,13 +39,13 @@ if (isset($_GET['d'])) {
     <?php if (!empty($_SESSION)) : ?>
       <div class="container w-75 p-4 rounded d-flex flex-column">
         <h2 class="mb-5">Tous vos bon messages :</h2>
-        <div id="fil" style="overflow: scroll; height : 20em;">
+        <div id="fil">
           <?php if (!empty($messages)) : ?>
             <?php foreach ($messages as $message) : ?>
               <p>
                 <?php $date = new DateTime($message['date']);
                 echo $date->format('H:i'); ?>
-                <?= $message['login'] . ' : ' . $message['message'] ?></p>
+                <?= $message['login'] . ' : ' . htmlentities($message['message']) ?></p>
             <?php endforeach ?>
           <?php endif; ?>
         </div>
@@ -57,7 +55,7 @@ if (isset($_GET['d'])) {
             <input type="text" name="message" id="message" class="form-control" placeholder="Ton bon message ici ..." aria-describedby="helpId">
           </div>
           <div class="d-flex flex-row justify-content-between align-items-center w-100">
-            <?php if (isset($_POST['message'])) : ?>
+            <?php if (isset($_POST['message']) && empty($_POST['message'])) : ?>
               <div class="alert alert-warning">Attention on dirait que tu as oublié d'écrire ton message !</div>
             <?php else : ?>
               <div></div>
