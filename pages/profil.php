@@ -52,11 +52,11 @@ if (isset($_GET['d'])) {
   <?php require_once($root_config . 'header.php') ?>
   <main class="h-100 d-flex flex-column justify-content-around align-items-center">
     <?php if (!empty($_SESSION)) : ?>
-      <div class="container">
-        <h2 class="mb-5">Ton bon profil</h2>
-        <form action="profil.php" method="post">
+      <div class="container w-50 p-4 rounded d-flex flex-column">
+        <h2 class="mb-4">Ton bon profil</h2>
+        <form action="profil.php" method="post" class="w-75 align-self-center">
           <div class="form-group">
-            <label for="login">
+            <label for="login" class="mb-3">
               Votre bon nom d'utilisateur :
               <?php if (!empty($_SESSION['login'])) : echo $_SESSION['login'];
               endif ?>
@@ -72,7 +72,16 @@ if (isset($_GET['d'])) {
           <div class="form-group">
             <input type="password" class="form-control" name="c_password" id="c_password" placeholder="Confirmer votre nouveau bon mot de passe">
           </div>
-          <button type="submit" class="btn btn-dark">Connexion</button>
+          <button type="submit" class="btn btn-dark">Mettre à jour</button>
+          <?php if (isset($verif_user) && $verif_user === false) : ?>
+            <div class="alert alert-danger mt-3">Mince ! Il semblerait que ce nom d'utilisateur soit déjà pris ... Tu en as un autre en tête ?</div>
+          <?php endif; ?>
+          <?php if (isset($verif_pwd) && $verif_pwd === false) : ?>
+            <div class="alert alert-danger mt-3">Ah tu n'as pas bien confirmé ton bon mot de passe, réessaye !</div>
+          <?php endif; ?>
+          <?php if (isset($verif_old) && $verif_old === false) : ?>
+            <div class="alert alert-warning mt-3">Attention du dois indiquer ton bon mot de passa actuel pour valider les modification !</div>
+          <?php endif; ?>
         </form>
       </div>
     <?php else : ?>

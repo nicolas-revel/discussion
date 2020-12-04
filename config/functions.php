@@ -79,7 +79,7 @@ function check_old_pwd($db, $user, $pwd)
   $result = $query->fetch(PDO::FETCH_ASSOC);
   if (!empty($_POST['old_password'])) {
     $check_old_pass = password_verify($_POST['old_password'], $result['password']);
-    if (isset($check_old_pass)) {
+    if ($check_old_pass === true) {
       return true;
     } else {
       return false;

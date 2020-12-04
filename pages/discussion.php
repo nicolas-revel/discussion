@@ -39,7 +39,7 @@ if (isset($_GET['d'])) {
   <?php require_once($root_config . 'header.php') ?>
   <main class="h-100 d-flex flex-column justify-content-around align-items-center">
     <?php if (!empty($_SESSION)) : ?>
-      <div class="container">
+      <div class="container w-75 p-4 rounded d-flex flex-column">
         <h2 class="mb-5">Tous vos bon messages :</h2>
         <div id="fil" style="overflow: scroll; height : 20em;">
           <?php if (!empty($messages)) : ?>
