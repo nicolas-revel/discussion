@@ -9,8 +9,8 @@
 }
 
 @font-face {
-  font-family: 'Karla';
-  src: url('../fonts/Karla/Karla-VariableFont_wght.ttf');
+	font-family: "Karla";
+	src: url("../fonts/Karla/Karla-VariableFont_wght.ttf");
 }
 
 /* Personalisation du header */
@@ -33,13 +33,13 @@
 /* Personnalisation du Footer */
 
 footer {
-  font-family: "Asap, regular";
+	font-family: "Asap, regular";
 	background-color: #000000;
 }
 
 footer .nav-link {
-  color: #ffffff;
-  font-weight: normal;
+	color: #ffffff;
+	font-weight: normal;
 }
 
 /* Personnalisation du main */
@@ -47,8 +47,8 @@ footer .nav-link {
 main {
 	background-image: url("../img/background.jpg");
 	background-size: cover;
-  background-repeat: no-repeat;
-  font-family: 'Karla';
+	background-repeat: no-repeat;
+	font-family: "Karla";
 }
 
 main .container {
@@ -56,19 +56,25 @@ main .container {
 }
 
 main a {
-  color: #000000;
-  font-weight: bold;
+	color: #000000;
+	font-weight: bold;
 }
 
 main a:hover {
-  color: #000000;
+	color: #000000;
 }
 
 main h2 {
-  font-size: 45px;
-  font-weight: 600;
+	font-size: 45px;
+	font-weight: 600;
 }
 
 main p {
-  font-size: 22px;
+	font-size: 22px;
+}
+
+#fil {
+  overflow: scroll;
+  overflow-x: hidden;
+	height: 20em;
 }

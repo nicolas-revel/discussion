@@ -34,13 +34,13 @@ if (isset($_GET['d'])) {
     <?php if (empty($_SESSION)) : ?>
       <div class="container p-5 rounded-lg m-5">
         <h2 class="mb-5">Salut, on espère que tu vas passer un bon moment</h2>
-        <p class="text-lead">Bienvenue sur notre site de fan de l'émission Un Bon Moment. Ce site n'a pas tellement pour but de présenter l'émission et son concept, mais plutôt de réunir tous les fans de l'émission sur un même site pour déchiffrer les énigmes de chaque épisode.</p>
+        <p>Bienvenue sur notre site de fan de l'émission Un Bon Moment. Ce site n'a pas tellement pour but de présenter l'émission et son concept, mais plutôt de réunir tous les fans de l'émission sur un même site pour déchiffrer les énigmes de chaque épisode.</p>
         <p>Tu peux t'inscrire en cliquant sur l'onglet "Inscription" juste en haut, ou en <a href="<?= $root_pages ?>inscription.php">cliquant ici</a>.</p>
         <p>Si tu as déjà un compte, tu peux aussi te connecter directement via le bouton de connexion en haut à droite ou en <a href="<?= $root_pages ?>connexion.php">cliquant ici</a>.</p>
       </div>
     <?php else : ?>
-      <div class="container">
-        <h2>Salut <?= $_SESSION['login']; ?>, on espère que tu vas passer un bon moment</h2>
+      <div class="container p-5 rounded-lg m-5">
+        <h2 class="mb-5">Salut <?= $_SESSION['login']; ?>, on espère que tu vas passer un bon moment</h2>
         <p>Re-Bienvenue sur notre site de fan de l'émission Un Bon Moment. Tu peux maintenant te balader sur notre site à commencer par aller sur le <a href="<?= $root_pages ?>discussion.php">chat de discussion</a> pour trouver les solution aux énigmes avec les autres utilisateurs !</p>
         <p>Tu peux aussi te rendre sur <a href="<?= $root_pages ?>profil.php">ton profil</a> si tu veux modifier tes informations, en mettant à jour ton nom d'utilisateur, ou en modifiant ton mot de passe.</p>
       </div>

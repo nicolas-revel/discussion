@@ -40,8 +40,9 @@ if (isset($_GET['d'])) {
   <?php require_once($root_config . 'header.php') ?>
   <main class="h-100 d-flex flex-column justify-content-around align-items-center">
     <?php if (empty($_SESSION)) : ?>
-      <div class="container w-50">
-        <form action="connexion.php" method="post">
+      <div class="container w-50 p-4 rounded d-flex flex-column">
+        <h2 class="mb-4">Connectez-vous !</h2>
+        <form action="connexion.php" method="post" class="w-75 align-self-center">
           <div class="form-group">
             <label for="login">Votre bon nom d'utilisateur : </label>
             <input type="text" name="login" id="login" class="form-control" placeholder="Votre bon nom d'utilisateur ici" aria-describedby="helpId" autofocus required>
@@ -50,7 +51,10 @@ if (isset($_GET['d'])) {
             <label for="password">Votre bon mot de passe : </label>
             <input type="password" class="form-control" name="password" id="password" placeholder="Votre bon mot de passe ici" required>
           </div>
-          <button type="submit" class="btn btn-dark">Connexion</button>
+          <button type="submit" class="btn btn-dark mb-4">Connexion</button>
+          <?php if (isset($connexion_state) && $connexion_state === false) : ?>
+            <div class="alert alert-danger">Ah il semblerait que tu n'ais pas rentré le bon nom d'utilisateur ou le bon mot de passe, réessayes pour voir ..?</div>
+          <?php endif; ?>
         </form>
       </div>
     <?php else : ?>
